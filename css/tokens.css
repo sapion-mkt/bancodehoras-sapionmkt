@@ -1,0 +1,124 @@
+/* Sapion Design System — tokens
+   Copiados de "Sapion Design System/tokens" (colors, typography, spacing, fonts).
+   Não altere as cores da marca: elas seguem o Guia da Marca Sapion 2020, p.23. */
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@font-face {
+  font-family: "Sora";
+  src: url("../assets/fonts/Sora-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Primárias ---- */
+  --sapion-blue-600: #444DF2;
+  --sapion-navy-900: #22256F;
+  --sapion-blue-300: #B6D2F5;
+  --sapion-blue-100: #DAEBFC;
+  --sapion-teal-500: #00C18C;
+  --sapion-teal-300: #05F29B;
+
+  /* ---- Secundárias (destaques) ---- */
+  --sapion-yellow-600: #FFD014;
+  --sapion-yellow-500: #FEDD00;
+  --sapion-yellow-200: #FFEE80;
+  --sapion-purple-500: #A260FF;
+  --sapion-purple-300: #BE90FF;
+  --sapion-purple-100: #ECDFFF;
+  --sapion-orange-500: #FF9D72;
+  --sapion-orange-300: #FDC19B;
+  --sapion-peach-200: #F9D5C0;
+
+  /* ---- Neutros ---- */
+  --sapion-gray-50: oklch(98% 0.003 265);
+  --sapion-gray-100: oklch(95.5% 0.005 265);
+  --sapion-gray-200: oklch(91% 0.008 265);
+  --sapion-gray-300: oklch(84% 0.011 265);
+  --sapion-gray-400: oklch(70% 0.014 265);
+  --sapion-gray-500: oklch(56% 0.016 265);
+  --sapion-gray-600: oklch(45% 0.018 265);
+  --sapion-gray-700: oklch(35% 0.02 265);
+  --sapion-gray-800: oklch(25% 0.022 265);
+  --sapion-gray-900: oklch(16% 0.02 265);
+  --sapion-white: #FFFFFF;
+
+  /* ---- Aliases semânticos ---- */
+  --surface-page: var(--sapion-white);
+  --surface-card: var(--sapion-white);
+  --surface-sunken: var(--sapion-gray-50);
+  --surface-brand: var(--sapion-blue-600);
+  --surface-brand-tint: var(--sapion-blue-100);
+  --surface-inverse: var(--sapion-navy-900);
+
+  --text-primary: var(--sapion-navy-900);
+  --text-secondary: var(--sapion-gray-600);
+  --text-muted: var(--sapion-gray-500);
+  --text-on-brand: var(--sapion-white);
+  --text-on-inverse: var(--sapion-white);
+  --text-link: var(--sapion-blue-600);
+  --text-link-hover: var(--sapion-navy-900);
+
+  --border-default: var(--sapion-gray-200);
+  --border-strong: var(--sapion-gray-300);
+  --border-brand: var(--sapion-blue-600);
+
+  --brand-primary: var(--sapion-blue-600);
+  --brand-primary-hover: var(--sapion-navy-900);
+  --brand-primary-active: var(--sapion-navy-900);
+
+  --state-success: var(--sapion-teal-500);
+  --state-warning: var(--sapion-yellow-600);
+  --state-danger: #E5484D;
+  --state-info: var(--sapion-blue-600);
+  --focus-ring: var(--sapion-blue-600);
+
+  /* ---- Tipografia ---- */
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Open Sans", system-ui, sans-serif;
+
+  --text-display-lg: 700 48px/1.08 var(--font-display);
+  --text-display-md: 600 36px/1.15 var(--font-display);
+  --text-display-sm: 600 28px/1.2 var(--font-display);
+  --text-display-xs: 600 22px/1.3 var(--font-display);
+
+  --text-body-lg: 400 18px/1.6 var(--font-body);
+  --text-body-md: 400 16px/1.6 var(--font-body);
+  --text-body-sm: 400 14px/1.5 var(--font-body);
+  --text-body-xs: 400 12px/1.4 var(--font-body);
+  --text-label: 600 13px/1.3 var(--font-body);
+  --text-overline: 600 12px/1.2 var(--font-body);
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-wide: 0.04em;
+
+  /* ---- Espaçamento, raio, sombra, movimento ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(34, 37, 111, 0.06), 0 1px 1px rgba(34, 37, 111, 0.04);
+  --shadow-md: 0 4px 12px rgba(34, 37, 111, 0.08), 0 2px 4px rgba(34, 37, 111, 0.05);
+  --shadow-lg: 0 12px 32px rgba(34, 37, 111, 0.12), 0 4px 8px rgba(34, 37, 111, 0.06);
+
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+}

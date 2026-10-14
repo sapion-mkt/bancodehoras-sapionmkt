@@ -55,6 +55,15 @@
     return (m > 0 ? "+" : m < 0 ? "−" : "") + s;
   }
 
+  /* Mais de 24 horas -> "equivale a 1 dia e 6h30" (dias de 24 horas). Até 24 horas, vazio. */
+  function fmtDias(min) {
+    const a = Math.abs(Math.round(Number(min) || 0));
+    if (a <= 1440) return "";
+    const d = Math.floor(a / 1440);
+    const r = a % 1440;
+    return `equivale a ${d} ${d === 1 ? "dia" : "dias"}${r ? ` e ${fmtHoras(r, false)}` : ""}`;
+  }
+
   const fmtHorasTela = fmtHoras;
   const deltaCls = (m) => (m > 0 ? "delta--in" : m < 0 ? "delta--out" : "delta--zero");
 
@@ -467,6 +476,7 @@
           <div>
             <span class="balance__label"><i data-lucide="hourglass"></i>Seu saldo no banco de horas</span>
             <div class="balance__value ${saldo > 0 ? "balance__value--pos" : saldo < 0 ? "balance__value--neg" : ""}">${fmtHoras(saldo)}</div>
+            ${fmtDias(saldo) ? `<p class="balance__days">${fmtDias(saldo)}</p>` : ""}
             <p class="balance__hint">${hint}</p>
           </div>
           <div class="balance__foot">
@@ -649,6 +659,7 @@
         <div class="card stat">
           <span class="stat__label"><i data-lucide="hourglass"></i>Saldo do time</span>
           <span class="stat__value ${deltaCls(total)}">${fmtHoras(total)}</span>
+          ${fmtDias(total) ? `<span class="hours-days">${fmtDias(total)}</span>` : ""}
           <span class="stat__hint">soma dos saldos aprovados</span>
         </div>
         <div class="card stat stat--success">
@@ -808,7 +819,7 @@
                   <td><div class="person">${avatar(u, true)}<div><strong>${esc(u.nome)}</strong><span>${esc(u.cargo || "Sem cargo informado")}</span></div></div></td>
                   <td>${u.papel === "admin" ? `<span class="badge badge--purple badge--plain">Administrador</span>` : `<span class="badge badge--neutral badge--plain">Colaborador</span>`}</td>
                   <td class="num">${u.papel === "admin" ? `<span class="muted">—</span>` : fmtHoras(u.jornada_minutos, false)}</td>
-                  <td class="num">${semBanco ? `<span class="muted">—</span>` : `<span class="delta ${deltaCls(saldo)}" style="font-size:17px">${fmtHoras(saldo)}</span>`}</td>
+                  <td class="num">${semBanco ? `<span class="muted">—</span>` : `<span class="delta ${deltaCls(saldo)}" style="font-size:17px">${fmtHoras(saldo)}</span>${fmtDias(saldo) ? `<span class="hours-days">${fmtDias(saldo)}</span>` : ""}`}</td>
                   <td class="num">${pend.length ? `${pend.length} · <span class="${deltaCls(somaPend)}">${fmtHoras(somaPend)}</span>` : `<span class="muted">—</span>`}</td>
                   <td>${u.ativo ? `<span class="badge badge--success">Liberado</span>` : `<span class="badge badge--neutral">Suspenso</span>`}</td>
                   <td class="nowrap" style="text-align:right">
